@@ -84,4 +84,39 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-}
+
+    // POST Reaction to thought
+    async addReaction (req, res) {
+        try {
+            const thought = await Thought.findOneAndUpdate(
+                {_id: req.params.thoughtId},
+                {$addToSet: {reactions: req.body}},
+                {runValidators: true, new: true}
+            );
+            if(!thought) {
+                return res.status(404).json({message: 'No thought with that ID'});
+            }
+            res.json(thought);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json(err);
+        }
+    },
+    // Remove reaction from thought (POST)
+    async removeReaction (req, res) {
+        try {
+            const thought = await Thought.findOneAndUpdate(
+                {_id: req.params.thoughtId},
+                {$pull: {reactions: {_id: req.params.reactionId}}},
+                {runValidators: true, new: true}
+            );
+            if(!thought) {
+                return res.status(404).json({message: 'No thought with that ID'});
+            };
+            res.json(thought);
+        } catch (err) {
+            console.log(err);
+            res.status(500).json(err);
+        }
+    },
+};
