@@ -24,6 +24,8 @@ The following commands were done via terminal:
 
 The user types `npm run seed` to seed the database, and `npm run start` to start the server. Then all routes are tested in Insomnia.
 
+https://github.com/Soleiles/social-network/assets/126806504/ceaf46b0-8a4c-4784-babb-04dc3f9da993
+
 ## License
 
 Refer to the license in the repository
