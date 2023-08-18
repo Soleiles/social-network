@@ -34,7 +34,7 @@ thoughtSchema.virtual('reactionCount').get(function () {
 });
 
 function formatDate(createdAt) {
-    return createdAt.toLocalDateString("en-US", {
+    return createdAt.toLocaleDateString("en-US", {
         day: "2-digit",
         year: "numeric",
         month: "long",
